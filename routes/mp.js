@@ -14,7 +14,7 @@ const express = require('express')
  *      "code":200
  *      "data" : null
  *  }
- * @apiSampleRequest https://go-fishing.cn/api/user/submit-login
+ * @apiSampleRequest https://go-fishing.cn/api/mp/getOpenId
  * @apiVersion 1.0.0
  */
 
