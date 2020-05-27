@@ -55,7 +55,7 @@ define({ "api": [
     },
     "sampleRequest": [
       {
-        "url": "https://go-fishing.cn/api/user/submit-login"
+        "url": "https://go-fishing.cn/api/mp/getOpenId"
       }
     ],
     "version": "1.0.0",
