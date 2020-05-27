@@ -1,4 +1,6 @@
 const express = require('express')
+const router = express.Router()
+
 /**
  * @api {get} /api/mp/getOpenId 获取openid
  * @apiDescription 获取openid
@@ -17,10 +19,6 @@ const express = require('express')
  * @apiSampleRequest https://go-fishing.cn/api/mp/getOpenId
  * @apiVersion 1.0.0
  */
-
-const router = express.Router()
-
-
 router.get('/getOpenid', (req, res) => {
   console.log(req.params)
   res.send('getOpenId')
