@@ -1,5 +1,4 @@
 const express = require('express')
-
 /**
  * @api {get} /api/mp/getOpenId 获取openid
  * @apiDescription 获取openid
