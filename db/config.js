@@ -1,0 +1,1 @@
+const mysql = require('mysql')const pool = mysql.createPool({  host: '121.196.124.171',    // 数据库地址  port: '3306',  user: 'root',          // 用户名  password: 'Wo449422301',       // 密码  database: 'fishing_db'          // 选中数据库})module.exports = pool
