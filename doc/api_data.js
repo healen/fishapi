@@ -41,7 +41,7 @@ define({ "api": [
     },
     "sampleRequest": [
       {
-        "url": "https://go-fishing.cn/api/mp/getOpenId"
+        "url": "http://121.196.124.171:8080/api/mp/getOpenId"
       }
     ],
     "version": "1.0.0",

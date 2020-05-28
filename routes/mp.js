@@ -22,7 +22,7 @@ const SECRET = "85065f9d2a10187b15f205dc4c29c9f4"
  *      openid:'xxx'
  *    }
  * }
- * @apiSampleRequest https://go-fishing.cn/api/mp/getOpenId
+ * @apiSampleRequest http://121.196.124.171:8080/api/mp/getOpenId
  * @apiVersion 1.0.0
  */
 router.get('/getOpenid', (req, res) => {
