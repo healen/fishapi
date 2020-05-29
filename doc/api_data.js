@@ -5,7 +5,7 @@ define({ "api": [
     "title": "2.注册用户",
     "description": "<p>注册用户</p>",
     "name": "addUser",
-    "group": "A小程序钓点",
+    "group": "A小程序用户",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -81,7 +81,7 @@ define({ "api": [
     ],
     "version": "1.0.0",
     "filename": "routes/mp.js",
-    "groupTitle": "A小程序钓点"
+    "groupTitle": "A小程序用户"
   },
   {
     "type": "get",
@@ -89,7 +89,7 @@ define({ "api": [
     "title": "1.获取openid",
     "description": "<p>获取openid</p>",
     "name": "getOpenId",
-    "group": "A小程序钓点",
+    "group": "A小程序用户",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -130,7 +130,7 @@ define({ "api": [
     ],
     "version": "1.0.0",
     "filename": "routes/mp.js",
-    "groupTitle": "A小程序钓点"
+    "groupTitle": "A小程序用户"
   },
   {
     "type": "get",
@@ -138,7 +138,7 @@ define({ "api": [
     "title": "3.根据ID查找用户",
     "description": "<p>根据id查找用户</p>",
     "name": "getUserById",
-    "group": "A小程序钓点",
+    "group": "A小程序用户",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -186,7 +186,7 @@ define({ "api": [
     ],
     "version": "1.0.0",
     "filename": "routes/mp.js",
-    "groupTitle": "A小程序钓点"
+    "groupTitle": "A小程序用户"
   },
   {
     "type": "get",
@@ -194,7 +194,7 @@ define({ "api": [
     "title": "4.获取用户列表",
     "description": "<p>根据id查找用户</p>",
     "name": "getUserList",
-    "group": "A小程序钓点",
+    "group": "A小程序用户",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -270,7 +270,7 @@ define({ "api": [
     ],
     "version": "1.0.0",
     "filename": "routes/mp.js",
-    "groupTitle": "A小程序钓点"
+    "groupTitle": "A小程序用户"
   },
   {
     "type": "post",
@@ -278,7 +278,7 @@ define({ "api": [
     "title": "6.完善用户手机号",
     "description": "<p>完善用户手机号</p>",
     "name": "setUserMobile",
-    "group": "A小程序钓点",
+    "group": "A小程序用户",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -326,7 +326,7 @@ define({ "api": [
     ],
     "version": "1.0.0",
     "filename": "routes/mp.js",
-    "groupTitle": "A小程序钓点"
+    "groupTitle": "A小程序用户"
   },
   {
     "type": "post",
@@ -334,7 +334,7 @@ define({ "api": [
     "title": "5.设置用户权限",
     "description": "<p>根据id查找用户</p>",
     "name": "setUserPurviewById",
-    "group": "A小程序钓点",
+    "group": "A小程序用户",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -382,7 +382,7 @@ define({ "api": [
     ],
     "version": "1.0.0",
     "filename": "routes/mp.js",
-    "groupTitle": "A小程序钓点"
+    "groupTitle": "A小程序用户"
   },
   {
     "type": "post",
@@ -390,7 +390,7 @@ define({ "api": [
     "title": "7.修改用户信息",
     "description": "<p>完善用户手机号</p>",
     "name": "updateUser",
-    "group": "A小程序钓点",
+    "group": "A小程序用户",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -473,7 +473,7 @@ define({ "api": [
     ],
     "version": "1.0.0",
     "filename": "routes/mp.js",
-    "groupTitle": "A小程序钓点"
+    "groupTitle": "A小程序用户"
   },
   {
     "type": "post",

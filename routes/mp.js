@@ -12,7 +12,7 @@ const SECRET = "85065f9d2a10187b15f205dc4c29c9f4"
  * @api {get} /api/mp/getOpenId 1.获取openid
  * @apiDescription 获取openid
  * @apiName getOpenId
- * @apiGroup A小程序钓点
+ * @apiGroup A小程序用户
  * @apiParam {string} code wx.login时候获取
  * @apiSuccess {json} result
  * @apiSuccessExample {json} Success-Response:
@@ -78,7 +78,7 @@ router.get('/getOpenid', (req, res) => {
  * @api {post} /api/mp/addUser 2.注册用户
  * @apiDescription 注册用户
  * @apiName addUser
- * @apiGroup A小程序钓点
+ * @apiGroup A小程序用户
  * @apiParam {string} openid
  * @apiParam {string} avatarUrl 头像
  * @apiParam {string} province 省份
@@ -106,7 +106,7 @@ router.get('/getOpenid', (req, res) => {
  * @api {get} /api/mp/getUserById 3.根据ID查找用户
  * @apiDescription 根据id查找用户
  * @apiName getUserById
- * @apiGroup A小程序钓点
+ * @apiGroup A小程序用户
  * @apiParam {number} id
  * @apiParam {string} openid
  * @apiSuccess {json} result
@@ -140,7 +140,7 @@ router.get('/getOpenid', (req, res) => {
  * @api {get} /api/mp/getUserList 4.获取用户列表
  * @apiDescription 根据id查找用户
  * @apiName getUserList
- * @apiGroup A小程序钓点
+ * @apiGroup A小程序用户
  * @apiParam {number} pageSize 每页多少条 pageSize=20
  * @apiParam {number} currentPage 每页多少条 currentPage=0
  * @apiParam {date} [startTime] 注册时间范围开始 
@@ -180,7 +180,7 @@ router.get('/getOpenid', (req, res) => {
  * @api {post} /api/mp/setUserPurviewById 5.设置用户权限
  * @apiDescription 根据id查找用户
  * @apiName setUserPurviewById
- * @apiGroup A小程序钓点
+ * @apiGroup A小程序用户
  * @apiParam {number} id 用户id
  * @apiParam {number} purview 权限 purview=1 1普通用户 2钓点管理员 3用户管理员 4超级管理员
  * @apiSuccess {json} result
@@ -200,7 +200,7 @@ router.get('/getOpenid', (req, res) => {
  * @api {post} /api/mp/setUserMobile 6.完善用户手机号
  * @apiDescription 完善用户手机号
  * @apiName setUserMobile
- * @apiGroup A小程序钓点
+ * @apiGroup A小程序用户
  * @apiParam {number} id 用户id
  * @apiParam {string} mobile 用户手机号
  * @apiSuccess {json} result
@@ -219,7 +219,7 @@ router.get('/getOpenid', (req, res) => {
  * @api {post} /api/mp/updateUser 7.修改用户信息
  * @apiDescription 完善用户手机号
  * @apiName updateUser
- * @apiGroup A小程序钓点
+ * @apiGroup A小程序用户
  * @apiParam {number} id 用户id
  * @apiParam {string} [mobile] 手机
  * @apiParam {string} [city] 城市
