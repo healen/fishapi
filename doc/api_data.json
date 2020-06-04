@@ -615,13 +615,6 @@
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "title",
-            "description": "<p>标题</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
             "field": "desc",
             "description": "<p>描述</p>"
           },
@@ -641,17 +634,17 @@
           },
           {
             "group": "Parameter",
-            "type": "Number",
+            "type": "String",
             "optional": false,
-            "field": "isCharge",
-            "description": "<p>是否收费</p>"
+            "field": "imgs",
+            "description": "<p>图片</p>"
           },
           {
             "group": "Parameter",
-            "type": "Number",
+            "type": "String",
             "optional": false,
-            "field": "charge",
-            "description": "<p>费用</p>"
+            "field": "video",
+            "description": "<p>视频</p>"
           }
         ]
       }
