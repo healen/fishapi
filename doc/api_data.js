@@ -1,95 +1,11 @@
 define({ "api": [
   {
     "type": "post",
-    "url": "/api/mp/addUser",
-    "title": "2.注册用户",
-    "description": "<p>注册用户</p>",
-    "name": "addUser",
-    "group": "A小程序用户",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "openid",
-            "description": ""
-          },
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "avatarUrl",
-            "description": "<p>头像</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "province",
-            "description": "<p>省份</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "city",
-            "description": "<p>城市</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "string",
-            "optional": false,
-            "field": "nickName",
-            "description": "<p>城市</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "number",
-            "optional": false,
-            "field": "gender",
-            "description": "<p>性别 1=男 2=女</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "json",
-            "optional": false,
-            "field": "result",
-            "description": ""
-          }
-        ]
-      },
-      "examples": [
-        {
-          "title": "Success-Response:",
-          "content": "{\n   success:true,\n   code:200,\n   msg:'注册成功',\n   data:null\n}",
-          "type": "json"
-        }
-      ]
-    },
-    "sampleRequest": [
-      {
-        "url": "http://localhost:8080/api/mp/addUser"
-      }
-    ],
-    "version": "1.0.0",
-    "filename": "routes/mp.js",
-    "groupTitle": "A小程序用户"
-  },
-  {
-    "type": "get",
     "url": "/api/mp/getOpenId",
-    "title": "1.获取openid",
+    "title": "获取openid",
     "description": "<p>获取openid</p>",
     "name": "getOpenId",
-    "group": "A小程序用户",
+    "group": "小程序用户",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -125,34 +41,34 @@ define({ "api": [
     },
     "sampleRequest": [
       {
-        "url": "http://localhost:8080/api/mp/getOpenId"
+        "url": "https://go-fishing.cn/api/mp/getOpenId"
       }
     ],
     "version": "1.0.0",
     "filename": "routes/mp.js",
-    "groupTitle": "A小程序用户"
+    "groupTitle": "小程序用户"
   },
   {
-    "type": "get",
+    "type": "post",
     "url": "/api/mp/getUserById",
-    "title": "3.根据ID查找用户",
+    "title": "根据ID查找用户",
     "description": "<p>根据id查找用户</p>",
     "name": "getUserById",
-    "group": "A小程序用户",
+    "group": "小程序用户",
     "parameter": {
       "fields": {
         "Parameter": [
           {
             "group": "Parameter",
             "type": "number",
-            "optional": false,
+            "optional": true,
             "field": "id",
             "description": ""
           },
           {
             "group": "Parameter",
             "type": "string",
-            "optional": false,
+            "optional": true,
             "field": "openid",
             "description": ""
           }
@@ -181,20 +97,20 @@ define({ "api": [
     },
     "sampleRequest": [
       {
-        "url": "http://localhost:8080/api/mp/getUserById"
+        "url": "https://go-fishing.cn/api/mp/getUserById"
       }
     ],
     "version": "1.0.0",
     "filename": "routes/mp.js",
-    "groupTitle": "A小程序用户"
+    "groupTitle": "小程序用户"
   },
   {
-    "type": "get",
+    "type": "post",
     "url": "/api/mp/getUserList",
-    "title": "4.获取用户列表",
-    "description": "<p>根据id查找用户</p>",
+    "title": "获取用户列表",
+    "description": "<p>获取用户列表</p>",
     "name": "getUserList",
-    "group": "A小程序用户",
+    "group": "小程序用户",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -265,20 +181,111 @@ define({ "api": [
     },
     "sampleRequest": [
       {
-        "url": "http://localhost:8080/api/mp/getUserList"
+        "url": "https://go-fishing.cn/api/mp/getUserList"
       }
     ],
     "version": "1.0.0",
     "filename": "routes/mp.js",
-    "groupTitle": "A小程序用户"
+    "groupTitle": "小程序用户"
+  },
+  {
+    "type": "post",
+    "url": "/api/mp/regUser",
+    "title": "注册用户",
+    "description": "<p>注册用户</p>",
+    "name": "regUser",
+    "group": "小程序用户",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "openid",
+            "description": ""
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "avatarUrl",
+            "description": "<p>头像</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "province",
+            "description": "<p>省份</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "city",
+            "description": "<p>城市</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "country",
+            "description": "<p>国家</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "nickName",
+            "description": "<p>城市</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "gender",
+            "description": "<p>性别 1=男 2=女</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "result",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n   success:true,\n   code:200,\n   msg:'注册成功',\n   data:null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "sampleRequest": [
+      {
+        "url": "https://go-fishing.cn/api/mp/regUser"
+      }
+    ],
+    "version": "1.0.0",
+    "filename": "routes/mp.js",
+    "groupTitle": "小程序用户"
   },
   {
     "type": "post",
     "url": "/api/mp/setUserMobile",
-    "title": "6.完善用户手机号",
+    "title": "完善用户手机号",
     "description": "<p>完善用户手机号</p>",
     "name": "setUserMobile",
-    "group": "A小程序用户",
+    "group": "小程序用户",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -321,20 +328,20 @@ define({ "api": [
     },
     "sampleRequest": [
       {
-        "url": "http://localhost:8080/api/mp/setUserMobile"
+        "url": "https://go-fishing.cn/api/mp/setUserMobile"
       }
     ],
     "version": "1.0.0",
     "filename": "routes/mp.js",
-    "groupTitle": "A小程序用户"
+    "groupTitle": "小程序用户"
   },
   {
     "type": "post",
     "url": "/api/mp/setUserPurviewById",
-    "title": "5.设置用户权限",
-    "description": "<p>根据id查找用户</p>",
+    "title": "设置用户权限",
+    "description": "<p>设置用户权限</p>",
     "name": "setUserPurviewById",
-    "group": "A小程序用户",
+    "group": "小程序用户",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -377,20 +384,20 @@ define({ "api": [
     },
     "sampleRequest": [
       {
-        "url": "http://localhost:8080/api/mp/setUserPurviewById"
+        "url": "https://go-fishing.cn/api/mp/setUserPurviewById"
       }
     ],
     "version": "1.0.0",
     "filename": "routes/mp.js",
-    "groupTitle": "A小程序用户"
+    "groupTitle": "小程序用户"
   },
   {
     "type": "post",
     "url": "/api/mp/updateUser",
-    "title": "7.修改用户信息",
+    "title": "修改用户信息",
     "description": "<p>完善用户手机号</p>",
     "name": "updateUser",
-    "group": "A小程序用户",
+    "group": "小程序用户",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -468,20 +475,20 @@ define({ "api": [
     },
     "sampleRequest": [
       {
-        "url": "http://localhost:8080/api/mp/updateUser"
+        "url": "https://go-fishing.cn/api/mp/updateUser"
       }
     ],
     "version": "1.0.0",
     "filename": "routes/mp.js",
-    "groupTitle": "A小程序用户"
+    "groupTitle": "小程序用户"
   },
   {
     "type": "post",
     "url": "/api/mp/BasanClickCountById",
-    "title": "3.点击量",
+    "title": "点击量",
     "description": "<p>点击量</p>",
     "name": "BasanClickCountById",
-    "group": "B小程序钓点",
+    "group": "小程序钓点",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -524,20 +531,20 @@ define({ "api": [
     },
     "sampleRequest": [
       {
-        "url": "http://localhost:8080/api/mp/BasanClickCountById"
+        "url": "https://go-fishing.cn/api/mp/BasanClickCountById"
       }
     ],
     "version": "1.0.0",
     "filename": "routes/mp.js",
-    "groupTitle": "B小程序钓点"
+    "groupTitle": "小程序钓点"
   },
   {
     "type": "post",
     "url": "/api/mp/addBasan",
-    "title": "1.添加钓点",
+    "title": "添加钓点",
     "description": "<p>添加钓点</p>",
     "name": "addBasan",
-    "group": "B小程序钓点",
+    "group": "小程序钓点",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -671,20 +678,69 @@ define({ "api": [
     },
     "sampleRequest": [
       {
-        "url": "http://localhost:8080/api/mp/addBasan"
+        "url": "https://go-fishing.cn/api/mp/addBasan"
       }
     ],
     "version": "1.0.0",
     "filename": "routes/mp.js",
-    "groupTitle": "B小程序钓点"
+    "groupTitle": "小程序钓点"
+  },
+  {
+    "type": "post",
+    "url": "/api/mp/deleteFile",
+    "title": "删除文件",
+    "description": "<p>删除文件</p>",
+    "name": "deleteFile",
+    "group": "小程序钓点",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": true,
+            "field": "fileName",
+            "description": "<p>钓点图片</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "result",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n   success:true,\n   code:200,\n   msg:'成功',\n   data:null\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "sampleRequest": [
+      {
+        "url": "https://go-fishing.cn/api/mp/deleteFile"
+      }
+    ],
+    "version": "1.0.0",
+    "filename": "routes/mp.js",
+    "groupTitle": "小程序钓点"
   },
   {
     "type": "post",
     "url": "/api/mp/updateBasanById",
-    "title": "2.更新钓点",
+    "title": "更新钓点",
     "description": "<p>更新钓点</p>",
     "name": "updateBasan",
-    "group": "B小程序钓点",
+    "group": "小程序钓点",
     "parameter": {
       "fields": {
         "Parameter": [
@@ -748,11 +804,69 @@ define({ "api": [
     },
     "sampleRequest": [
       {
-        "url": "http://localhost:8080/api/mp/addBasan"
+        "url": "https://go-fishing.cn/api/mp/addBasan"
       }
     ],
     "version": "1.0.0",
     "filename": "routes/mp.js",
-    "groupTitle": "B小程序钓点"
+    "groupTitle": "小程序钓点"
+  },
+  {
+    "type": "post",
+    "url": "/api/mp/upload",
+    "title": "上传图片",
+    "description": "<p>上传图片</p>",
+    "name": "upload",
+    "group": "小程序钓点",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "file",
+            "optional": true,
+            "field": "basanImg",
+            "description": "<p>钓点图片</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "file",
+            "optional": true,
+            "field": "avatar",
+            "description": "<p>用户头像</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "file",
+            "optional": true,
+            "field": "video",
+            "description": "<p>视频</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "result",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n   success:true,\n   code:200,\n   msg:'成功',\n   data:'xxx.png'\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "1.0.0",
+    "filename": "routes/mp.js",
+    "groupTitle": "小程序钓点"
   }
 ] });
