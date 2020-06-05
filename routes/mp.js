@@ -11,7 +11,7 @@ const multer = require('multer');
 const upload = multer({dest: 'upload/'})
 
 /**
- * @api {post} /api/mp/getOpenId 获取openid
+ * @api {post} /api/mp/getOpenId 获取openid[完成]
  * @apiDescription 获取openid
  * @apiName getOpenId
  * @apiGroup 小程序用户
@@ -68,7 +68,7 @@ router.post('/getOpenid', (req, res) => {
 })
 
 /**
- * @api {post} /api/mp/regUser 注册用户
+ * @api {post} /api/mp/regUser 注册用户[完成]
  * @apiDescription 注册用户
  * @apiName regUser
  * @apiGroup 小程序用户
@@ -125,7 +125,7 @@ router.post('/regUser', (req, res) => {
 
 
 /**
- * @api {post} /api/mp/getUserById 根据ID查找用户
+ * @api {post} /api/mp/getUserById 根据ID查找用户[完成]
  * @apiDescription 根据id查找用户
  * @apiName getUserById
  * @apiGroup 小程序用户
@@ -296,7 +296,7 @@ router.post('/updateUser', (req, res) => {
 
 
 /**
- * @api {post} /api/mp/upload 上传图片
+ * @api {post} /api/mp/upload 上传图片[完成]
  * @apiDescription 上传图片
  * @apiName upload
  * @apiGroup 小程序钓点
@@ -339,7 +339,7 @@ router.post('/upload', upload.single('basanImg'), function (req, res, next) {
 
 
 /**
- * @api {post} /api/mp/deleteFile 删除文件
+ * @api {post} /api/mp/deleteFile 删除文件[完成]
  * @apiDescription 删除文件
  * @apiName deleteFile
  * @apiGroup 小程序钓点
@@ -378,7 +378,7 @@ router.post('/deleteFile', (req, res) => {
 
 
 /**
- * @api {post} /api/mp/addBasan 添加钓点
+ * @api {post} /api/mp/addBasan 添加钓点[完成]
  * @apiDescription 添加钓点
  * @apiName addBasan
  * @apiGroup 小程序钓点
@@ -463,6 +463,84 @@ router.post('/addBasan', (req, res) => {
 })
 
 
+
+
+
+/**
+ * @api {post} /api/mp/getBasanList 查询钓点[完成]
+ * @apiDescription 查询钓点
+ * @apiName getBasanList
+ * @apiGroup 小程序钓点
+ * @apiParam {string} type index：首页,me：我的钓点，fav:我收藏的钓点，map日历地图点
+ * @apiParam {number} userId  type=me/fav 必填
+ * @apiParam {number} page 地址 default=0
+ * @apiParam {number} pageSize 每页多少条 default=20
+ * @apiParam {number} lat 用户经度
+ * @apiParam {number} lon 用户纬度
+ * @apiSuccess {json} result
+ * @apiSuccessExample {json} Success-Response:
+ * {
+ *    success:true,
+ *    code:200,
+ *    msg:'查询成功',
+ *    data:{
+ *      type:'index'
+ *      total:200,
+ *      page:0,
+ *      pageSize:20,
+ *      list:[...]
+ *    }
+ * }
+ * @apiSampleRequest https://go-fishing.cn/api/mp/getBasanList
+ * @apiVersion 1.0.0
+ */
+router.post('/getBasanList', async (req, res) => {
+  let {body} = req
+  let {type,page,pageSize,lat,lon} = body
+  if(type === 'index'){
+    let offset = (page-1)*pageSize
+    let sqlTotal = `SELECT count(*) as total FROM basan WHERE reviewed=1 AND showIndex=1`
+    let sql = `SELECT * FROM basan WHERE reviewed=1 AND showIndex=1 ORDER BY createTime DESC LIMIT ${offset},${pageSize}`
+    try {
+      let getTotal = await query(sqlTotal)
+      let {total} = getTotal[0]
+      let list = await query(sql)
+      res.json({
+        success: true,
+        code: 200,
+        msg: `获取成功`,
+        data: {
+          pageSize:pageSize*1,
+          page:page*1,
+          type,
+          total,
+          list
+        }
+      })
+    }catch (err) {
+      console.error(err)
+      let {errno, code, sqlMessage} = err
+      res.json({
+        success: false,
+        code: errno,
+        msg: `${sqlMessage} [${code}]`,
+        data: null
+      })
+
+
+    }
+  }else if(type==='me'){
+
+  }else if(type==='fav'){
+
+  }else if(type==='map'){
+
+  }else {
+
+  }
+})
+
+
 /**
  * @api {post} /api/mp/updateBasanById 更新钓点
  * @apiDescription 更新钓点
@@ -481,9 +559,12 @@ router.post('/addBasan', (req, res) => {
  *    msg:'添加成功',
  *    data:null
  * }
- * @apiSampleRequest https://go-fishing.cn/api/mp/addBasan
+ * @apiSampleRequest https://go-fishing.cn/api/mp/updateBasanById
  * @apiVersion 1.0.0
  */
+router.post('/updateBasanById', (req, res) => {
+
+})
 
 
 /**
@@ -504,8 +585,9 @@ router.post('/addBasan', (req, res) => {
  * @apiSampleRequest https://go-fishing.cn/api/mp/BasanClickCountById
  * @apiVersion 1.0.0
  */
+router.post('/BasanClickCountById', (res, req) => {
 
-
+})
 
 
 module.exports = router

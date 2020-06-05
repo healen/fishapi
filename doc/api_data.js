@@ -2,7 +2,7 @@ define({ "api": [
   {
     "type": "post",
     "url": "/api/mp/getOpenId",
-    "title": "获取openid",
+    "title": "获取openid[完成]",
     "description": "<p>获取openid</p>",
     "name": "getOpenId",
     "group": "小程序用户",
@@ -51,7 +51,7 @@ define({ "api": [
   {
     "type": "post",
     "url": "/api/mp/getUserById",
-    "title": "根据ID查找用户",
+    "title": "根据ID查找用户[完成]",
     "description": "<p>根据id查找用户</p>",
     "name": "getUserById",
     "group": "小程序用户",
@@ -191,7 +191,7 @@ define({ "api": [
   {
     "type": "post",
     "url": "/api/mp/regUser",
-    "title": "注册用户",
+    "title": "注册用户[完成]",
     "description": "<p>注册用户</p>",
     "name": "regUser",
     "group": "小程序用户",
@@ -541,7 +541,7 @@ define({ "api": [
   {
     "type": "post",
     "url": "/api/mp/addBasan",
-    "title": "添加钓点",
+    "title": "添加钓点[完成]",
     "description": "<p>添加钓点</p>",
     "name": "addBasan",
     "group": "小程序钓点",
@@ -681,7 +681,7 @@ define({ "api": [
   {
     "type": "post",
     "url": "/api/mp/deleteFile",
-    "title": "删除文件",
+    "title": "删除文件[完成]",
     "description": "<p>删除文件</p>",
     "name": "deleteFile",
     "group": "小程序钓点",
@@ -721,6 +721,90 @@ define({ "api": [
     "sampleRequest": [
       {
         "url": "https://go-fishing.cn/api/mp/deleteFile"
+      }
+    ],
+    "version": "1.0.0",
+    "filename": "routes/mp.js",
+    "groupTitle": "小程序钓点"
+  },
+  {
+    "type": "post",
+    "url": "/api/mp/getBasanList",
+    "title": "查询钓点[完成]",
+    "description": "<p>查询钓点</p>",
+    "name": "getBasanList",
+    "group": "小程序钓点",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "string",
+            "optional": false,
+            "field": "type",
+            "description": "<p>index：首页,me：我的钓点，fav:我收藏的钓点，map日历地图点</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "userId",
+            "description": "<p>type=me/fav 必填</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "page",
+            "description": "<p>地址 default=0</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "pageSize",
+            "description": "<p>每页多少条 default=20</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "lat",
+            "description": "<p>用户经度</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "lon",
+            "description": "<p>用户纬度</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "result",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n   success:true,\n   code:200,\n   msg:'查询成功',\n   data:{\n     type:'index'\n     total:200,\n     page:0,\n     pageSize:20,\n     list:[...]\n   }\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "sampleRequest": [
+      {
+        "url": "https://go-fishing.cn/api/mp/getBasanList"
       }
     ],
     "version": "1.0.0",
@@ -797,7 +881,7 @@ define({ "api": [
     },
     "sampleRequest": [
       {
-        "url": "https://go-fishing.cn/api/mp/addBasan"
+        "url": "https://go-fishing.cn/api/mp/updateBasanById"
       }
     ],
     "version": "1.0.0",
@@ -807,7 +891,7 @@ define({ "api": [
   {
     "type": "post",
     "url": "/api/mp/upload",
-    "title": "上传图片",
+    "title": "上传图片[完成]",
     "description": "<p>上传图片</p>",
     "name": "upload",
     "group": "小程序钓点",
