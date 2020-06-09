@@ -463,9 +463,6 @@ router.post('/addBasan', (req, res) => {
 })
 
 
-
-
-
 /**
  * @api {post} /api/mp/getBasanList 查询钓点[完成]
  * @apiDescription 查询钓点
@@ -496,28 +493,42 @@ router.post('/addBasan', (req, res) => {
  */
 router.post('/getBasanList', async (req, res) => {
   let {body} = req
-  let {type,page,pageSize,lat,lon} = body
-  if(type === 'index'){
-    let offset = (page-1)*pageSize
+  let {type, page, pageSize, lat, lon} = body
+  if (type === 'index') {
+    let offset = (page - 1) * pageSize
     let sqlTotal = `SELECT count(*) as total FROM basan WHERE reviewed=1 AND showIndex=1`
     let sql = `SELECT * FROM basan WHERE reviewed=1 AND showIndex=1 ORDER BY createTime DESC LIMIT ${offset},${pageSize}`
     try {
       let getTotal = await query(sqlTotal)
       let {total} = getTotal[0]
       let list = await query(sql)
+
+      for (let i = 0; i < list.length; i++) {
+        let item = list[i]
+        let {openid} = item
+        let sql = `SELECT avatarUrl,nickName FROM user WHERE openid='${openid}'`
+        try {
+          let user = await query(sql)
+          item.avatarUrl = user[0] ? user[0].avatarUrl : null
+          item.nickName = user[0] ? user[0].nickName : '匿名'
+          item.imgs = JSON.parse(item.imgs)
+        } catch (err) {
+          console.error(err)
+        }
+      }
       res.json({
         success: true,
         code: 200,
         msg: `获取成功`,
         data: {
-          pageSize:pageSize*1,
-          page:page*1,
+          pageSize: pageSize * 1,
+          page: page * 1,
           type,
           total,
           list
         }
       })
-    }catch (err) {
+    } catch (err) {
       console.error(err)
       let {errno, code, sqlMessage} = err
       res.json({
@@ -526,18 +537,87 @@ router.post('/getBasanList', async (req, res) => {
         msg: `${sqlMessage} [${code}]`,
         data: null
       })
-
-
     }
-  }else if(type==='me'){
+  } else if (type === 'me') {
 
-  }else if(type==='fav'){
+  } else if (type === 'fav') {
 
-  }else if(type==='map'){
+  } else if (type === 'map') {
 
-  }else {
+  } else {
 
   }
+})
+
+
+/**
+ * @api {post} /api/mp/getBasanById 根据ID查询钓点
+ * @apiDescription 根据ID查询钓点
+ * @apiName getBasanById
+ * @apiGroup 小程序钓点
+ * @apiParam {number} id  钓点ID
+ * @apiSuccess {json} result
+ * @apiSuccessExample {json} Success-Response:
+ * {
+ *    success:true,
+ *    code:200,
+ *    msg:'查询成功',
+ *    data:{...}
+ * }
+ * @apiSampleRequest https://go-fishing.cn/api/mp/getBasanById
+ * @apiVersion 1.0.0
+ */
+
+router.post('/getBasanById', async (req, res) => {
+
+  let {id} = req.body
+  let sql = `SELECT * FROM basan WHERE id=${id}`
+
+  try {
+    let list = await query(sql)
+
+    for (let i = 0; i < list.length; i++) {
+
+      let item = list[0]
+
+      let sql = `SELECT avatarUrl,nickName FROM user WHERE openid='${item.openid}'`
+
+      let user = await query(sql)
+      item.avatarUrl = user[0] ? user[0].avatarUrl : null
+      item.nickName = user[0] ? user[0].nickName : ''
+
+    }
+    console.log(list)
+    if(list.length==0){
+      res.json({
+        success: true,
+        code: 201,
+        msg: `没有获取到`,
+        data: null
+      })
+
+    }else{
+      res.json({
+        success: true,
+        code: 200,
+        msg: `获取成功`,
+        data: list[0]
+      })
+
+    }
+
+  } catch (err) {
+    console.error(err)
+    let {errno, code, sqlMessage} = err
+    res.json({
+      success: false,
+      code: errno,
+      msg: `${sqlMessage} [${code}]`,
+      data: null
+    })
+
+  }
+
 })
 
 

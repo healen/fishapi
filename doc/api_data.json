@@ -729,6 +729,55 @@
   },
   {
     "type": "post",
+    "url": "/api/mp/getBasanById",
+    "title": "根据ID查询钓点",
+    "description": "<p>根据ID查询钓点</p>",
+    "name": "getBasanById",
+    "group": "小程序钓点",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "number",
+            "optional": false,
+            "field": "id",
+            "description": "<p>钓点ID</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "json",
+            "optional": false,
+            "field": "result",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "{\n   success:true,\n   code:200,\n   msg:'查询成功',\n   data:{...}\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "sampleRequest": [
+      {
+        "url": "https://go-fishing.cn/api/mp/getBasanById"
+      }
+    ],
+    "version": "1.0.0",
+    "filename": "routes/mp.js",
+    "groupTitle": "小程序钓点"
+  },
+  {
+    "type": "post",
     "url": "/api/mp/getBasanList",
     "title": "查询钓点[完成]",
     "description": "<p>查询钓点</p>",

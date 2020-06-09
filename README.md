@@ -14,7 +14,7 @@ linux / mac / windows
 
 node.js+express+mysql+nginx
 
-### 当前版本 
+### 当前版本
 
 1.0.0
 
