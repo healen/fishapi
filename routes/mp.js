@@ -543,7 +543,52 @@ router.post('/getBasanList', async (req, res) => {
 
   } else if (type === 'map') {
 
-  } else {
+  } else if (type === 'super'){
+    let offset = (page - 1) * pageSize
+    let sqlTotal = `SELECT count(*) as total FROM basan`
+    let sql = `SELECT * FROM basan ORDER BY createTime DESC LIMIT ${offset},${pageSize}`
+    try {
+      let getTotal = await query(sqlTotal)
+      let {total} = getTotal[0]
+      let list = await query(sql)
+
+      for (let i = 0; i < list.length; i++) {
+        let item = list[i]
+        let {openid} = item
+        let sql = `SELECT avatarUrl,nickName FROM user WHERE openid='${openid}'`
+        try {
+          let user = await query(sql)
+          item.avatarUrl = user[0] ? user[0].avatarUrl : null
+          item.nickName = user[0] ? user[0].nickName : '匿名'
+          item.imgs = JSON.parse(item.imgs)
+        } catch (err) {
+          console.error(err)
+        }
+      }
+      res.json({
+        success: true,
+        code: 200,
+        msg: `获取成功`,
+        data: {
+          pageSize: pageSize * 1,
+          page: page * 1,
+          type,
+          total,
+          list
+        }
+      })
+    } catch (err) {
+      console.error(err)
+      let {errno, code, sqlMessage} = err
+      res.json({
+        success: false,
+        code: errno,
+        msg: `${sqlMessage} [${code}]`,
+        data: null
+      })
+    }
+  }else{
+
 
   }
 })
