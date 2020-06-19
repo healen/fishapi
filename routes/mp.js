@@ -585,6 +585,7 @@ router.post('/getBasanById', async (req, res) => {
       let user = await query(sql)
       item.avatarUrl = user[0] ? user[0].avatarUrl : null
       item.nickName = user[0] ? user[0].nickName : ''
+      item.imgs = JSON.parse(item.imgs)
 
     }
     console.log(list)
