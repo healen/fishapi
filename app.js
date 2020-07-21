@@ -37,8 +37,8 @@ app.use('/api/mp',mp)
 /*
 * 读取证书文件
 * */
-let key = fs.readFileSync('ssl/3972272_go-fishing.cn.key', 'utf8');
-let cert = fs.readFileSync('ssl/3972272_go-fishing.cn.pem', 'utf8');
+let key = fs.readFileSync('ssl/4237527_go-fishing.cn.key', 'utf8');
+let cert = fs.readFileSync('ssl/4237527_go-fishing.cn.pem', 'utf8');
 let credentials = {key, cert};
 
 

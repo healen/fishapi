@@ -551,7 +551,6 @@ router.post('/getBasanList', async (req, res) => {
       let getTotal = await query(sqlTotal)
       let {total} = getTotal[0]
       let list = await query(sql)
-
       for (let i = 0; i < list.length; i++) {
         let item = list[i]
         let {openid} = item
@@ -664,6 +663,49 @@ router.post('/getBasanById', async (req, res) => {
   }
 
 })
+
+
+
+
+
+
+/**
+ * @api {post} /api/mp/deleteBasanById 根据ID查询钓点
+ * @apiDescription 根据ID查询钓点
+ * @apiName deleteBasanById
+ * @apiGroup 小程序钓点
+ * @apiParam {number} id  钓点ID
+ * @apiSuccess {json} result
+ * @apiSuccessExample {json} Success-Response:
+ * {
+ *    success:true,
+ *    code:200,
+ *    msg:'查询成功',
+ *    data:{...}
+ * }
+ * @apiSampleRequest https://go-fishing.cn/api/mp/deleteBasanById
+ * @apiVersion 1.0.0
+ */
+
+router.post('/deleteBasanById',(res,req)=>{
+  let {id} = req.body
+  let sql = `SELECT * FROM basan WHERE id=${id}`
+
+  query(sql).then(res=>{
+    console.log(res)
+  })
+
+
+
+
+})
+
+
+
+
+
+
+
 
 
 /**
